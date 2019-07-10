@@ -1,0 +1,372 @@
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: url(../img/jadi.png),linear-gradient(rgb(115, 211, 255), white); 
+        background-repeat: no-repeat;
+        background-size:49vh, 100vh;
+        background-position:bottom;
+        height: 100vh;
+        background-position-y: 28vh, 0vh;
+    } 
+
+    .box {
+
+        transform: translate(-50%,-50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+    }
+
+    .button_1{
+        height:38px;
+        background-color: rgb(41, 32, 32);
+        text-align: center;
+        color:#ffffff;
+        width: 20vh;
+        left: 50%;
+        border: black 2px solid;
+        top: 50%;
+        margin-top: 10px;
+        margin-bottom: 10vh;
+    }
+
+    .box input[type="text"]{
+        padding:4px;
+        height:24px;
+        width: 18vh;
+        border: black 2px solid;
+        text-align: center;
+
+    }
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: lightsteelblue;
+        background-image: none;
+    } 
+
+    .box {
+        transform: translate(-50%,-50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+        background-image: url(../img/3.png), url(../img/bg1.png), linear-gradient(rgb(115, 211, 255), white); 
+        background-repeat: no-repeat;
+        background-position: left bottom, center bottom, center;
+        background-size: 140vh, 83vh, 100vh;
+        background-position-y: -0vh, 84vh, 0;
+        background-position-x: -20vh, 0vh, 0vh;
+        height: 70vh;
+        padding-top: 30vh;
+        padding-left: 30vh;
+        padding-right: 30vh;
+        border-left: lightslategray 2px solid;
+        border-right: lightslategray 2px solid;
+    }
+
+    .btn{
+        border: 1px solid #3498db;
+        background: none;
+        padding:;
+        font-size: 20px;
+        margin-top: 2vh;
+        font-family: "montserrat";
+        cursor: pointer;
+        height: 5vh;
+        transition: 0.8s; 
+        position: relative;
+        overflow: hidden;
+        left: auto;
+        text-align: center;
+        top: auto;
+
+    }
+
+    .button_1{
+        color: #fff;
+    }
+
+    .button_1:hover{
+        color: #3498db;
+    }
+
+    .btn::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: #3498db;
+        z-index: -1;
+        transition: 0.8s;
+    }
+
+    .button_1::before{
+        top: 0;
+        border-radius: 0 0 50% 50%;
+    }
+
+    .button_1::before{
+        height: 180%;
+    }
+
+    .button_1:hover::before{
+        height: 0%;
+    }
+
+    .box input[type="text"]{
+        padding:4px;
+        margin-top: ;
+        height:3vh;
+        width: 18vh;
+        border: black 2px solid;
+        text-align: center;
+    }
+
+
+    
+    #eye1 {
+        position: absolute;
+        top: 50.4vh;
+        left: 9vh;
+        /* background-color: aqua; */
+        display: inline-block;
+        border-radius: 50%;
+        height: 18px;
+        width: 18px;
+    }
+
+    #eye1:after { /*pupil*/
+        position: absolute;
+        bottom: 10px;
+        right: 7px;
+        width: 5px;
+        height: 5px;
+        background: #000;
+        border-radius: 50%;
+        content: " ";
+    }
+
+    #eye2 {
+        position: absolute;
+        top: 50.4vh;
+        left: 12vh;
+        /* background-color: aqua; */
+        display: inline-block;
+        border-radius: 50%;
+        height: 18px;
+        width: 18px;
+    }
+
+    #eye2:after { /*pupil*/
+        position: absolute;
+        bottom: 10px;
+        right: 7px;
+        width: 5px;
+        height: 5px;
+        background: #000;
+        border-radius: 50%;
+        content: " ";
+    }
+
+    
+}/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: url(../img/jadi.png),linear-gradient(rgb(115, 211, 255), white); 
+        background-repeat: no-repeat;
+        background-size:49vh, 100vh;
+        background-position:bottom;
+        height: 100vh;
+        background-position-y: 28vh, 0vh;
+    } 
+
+    .box {
+
+        transform: translate(-50%,-50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+    }
+
+    .button_1{
+        height:38px;
+        background-color: rgb(41, 32, 32);
+        text-align: center;
+        color:#ffffff;
+        width: 20vh;
+        left: 50%;
+        border: black 2px solid;
+        top: 50%;
+        margin-top: 10px;
+        margin-bottom: 10vh;
+    }
+
+    .box input[type="text"]{
+        padding:4px;
+        height:24px;
+        width: 18vh;
+        border: black 2px solid;
+        text-align: center;
+
+    }
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: lightsteelblue;
+        background-image: none;
+    } 
+
+    .box h3{
+        margin-top:-3vh;
+    }
+
+    .box {
+        transform: translate(-50%,-50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+        background-image: url(../img/3.png), url(../img/bg1.png), linear-gradient(rgb(115, 211, 255), white); 
+        background-repeat: no-repeat;
+        background-position: left bottom, center bottom, center;
+        background-size: 140vh, 83vh, 100vh;
+        background-position-y: -0vh, 84vh, 0;
+        background-position-x: -20vh, 0vh, 0vh;
+        height: 70vh;
+        padding-top: 30vh;
+        padding-left: 30vh;
+        padding-right: 30vh;
+        font-size:13px;
+        border-left: lightslategray 2px solid;
+        border-right: lightslategray 2px solid;
+    }
+
+    .btn{
+        border: 1px solid #3498db;
+        background: none;
+        padding:;
+        font-size: 20px;
+        margin-top: 2vh;
+        font-family: "montserrat";
+        cursor: pointer;
+        height: 5vh;
+        transition: 0.8s; 
+        position: relative;
+        overflow: hidden;
+        left: auto;
+        text-align: center;
+        top: auto;
+
+    }
+
+    .button_1{
+        color: #fff;
+    }
+
+    .button_1:hover{
+        color: #3498db;
+    }
+
+    .btn::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: #3498db;
+        z-index: -1;
+        transition: 0.8s;
+    }
+
+    .button_1::before{
+        top: 0;
+        border-radius: 0 0 50% 50%;
+    }
+
+    .button_1::before{
+        height: 180%;
+    }
+
+    .button_1:hover::before{
+        height: 0%;
+    }
+
+    .box input[type="text"]{
+        padding:4px;
+        margin-top: -5vh;
+        height:3vh;
+        width: 18vh;
+        border: black 2px solid;
+        text-align: center;
+    }
+
+
+    
+    #eye1 {
+        position: absolute;
+        top: 50.4vh;
+        left: 9vh;
+        /* background-color: aqua; */
+        display: inline-block;
+        border-radius: 50%;
+        height: 18px;
+        width: 18px;
+    }
+
+    #eye1:after { /*pupil*/
+        position: absolute;
+        bottom: 10px;
+        right: 7px;
+        width: 5px;
+        height: 5px;
+        background: #000;
+        border-radius: 50%;
+        content: " ";
+    }
+
+    #eye2 {
+        position: absolute;
+        top: 50.4vh;
+        left: 12vh;
+        /* background-color: aqua; */
+        display: inline-block;
+        border-radius: 50%;
+        height: 18px;
+        width: 18px;
+    }
+
+    #eye2:after { /*pupil*/
+        position: absolute;
+        bottom: 10px;
+        right: 7px;
+        width: 5px;
+        height: 5px;
+        background: #000;
+        border-radius: 50%;
+        content: " ";
+    }
+
+    
+}

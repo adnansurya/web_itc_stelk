@@ -1,0 +1,21 @@
+{
+  "rules": {
+    ".read": "true",
+    ".write": "true",
+    "games": {
+      ".read": "true",
+      ".write": "true",
+      "clappybird": {
+        ".indexOn": "skor"
+      },
+      "tabangka": {
+        ".indexOn": "skor"
+      },
+      "sabar" :{
+        ".read": "true",
+        ".write": "true"
+        
+      }
+    }
+  }
+}

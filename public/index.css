@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Literata&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+.literata {
+  font-family: 'Literata', serif;
+}
+
+.navbar {
+  position: relative;
+}
+
+.brand {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px !important;
+  display: block;
+}
+
+.title {
+  color: #f44336;
+  text-decoration: overline underline;
+}

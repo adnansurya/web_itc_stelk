@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ADMIN -ITC</title>
+  <link href="../css/styleLeaderboard.css" type="text/css" rel="stylesheet">
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-database.js"></script>
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+          apiKey: "AIzaSyCgn26OzP0kBrnlzZqGAhonVJN_o8z-iOg",
+        authDomain: "itc-telkom.firebaseapp.com",
+        databaseURL: "https://itc-telkom.firebaseio.com",
+        projectId: "itc-telkom",
+        storageBucket: "itc-telkom.appspot.com",
+        messagingSenderId: "494028286275",
+        appId: "1:494028286275:web:5a0531e6323b420c"
+      };
+      firebase.initializeApp(config);
+      const db = firebase.database();
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+          </li>    
+          <li class="nav-item">
+              <a class="nav-link" href="#">Sabar
+                  <span class="sr-only">(current)</span>
+              </a>
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Selamat Datang di Halaman Admin ITC</h1>
+        <p class="lead">Untuk saat ini hanya menyediakan pengaturan untuk games</p>
+        <ul class="list-unstyled">
+          <li>Halamain ini menggunakan : </li>
+          <li>Bootstrap 4.3.1</li>
+          <li>jQuery 3.4.1</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-5  text-left">
+        <h3>Tambah Pertanyaan</h3>
+      <div class="col-md-12 ">
+          <form>
+              <div class="form-group">
+               <label for="tanyaTxt">Pertanyaan</label>
+                <input type="text" class="form-control" id="tanyaTxt"  placeholder="Masukkan Pertanyaan">
+              </div>
+              <div class="form-group">
+               
+                  <div class="form-group">
+                      <label for="jawabSel">Jawaban :</label>
+                      <select class="form-control" id="jawabSel">
+                        <option value="benar">Benar</option>
+                        <option value="salah">Salah</option>                        
+                      </select>
+                    </div>
+              </div>        
+              <button onclick="addTanya()" type="submit" class="btn btn-primary">Tambah</button>
+            </form>
+      </div>
+        
+    </div>
+    
+      <div class="row mt-5">
+        <h3>List Pertanyaan</h3>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-12">
+            <table id="tabel">
+
+              
+                <thead>
+                  <tr>
+                    <th scope="col">Tanya</th>
+                    <th scope="col">Jawab</th>
+                    <!-- <th colspan="2" scope="col">Level</th> -->
+                  </tr>
+                </thead>
+                <tbody id="bodyTable">
+          
+                </tbody>
+                      
+          
+          
+          
+              </table>
+        </div>
+
+          
+          
+      </div>
+      <div class="row mt-5">
+          <div class="col-md-6 offset-md-2">
+            <h3 class="text-left">Reset Pertanyaan</h3>
+          </div>
+          <div class="col-md-4 text-left">
+            <button onclick="resetSoal()" class="btn btn-danger">Hapus Semua</button>
+          </div>
+        </div>
+  </div>
+
+  <script>
+    let nomor_soal;
+    let tanya,jawab;
+    var last = db.ref('games/sabar/question/').orderByKey().limitToLast(1);
+  last.once('value').then(function(snapshot){
+    
+    
+    var datakey = snapshot.key;
+    var data = snapshot.val();
+ 
+    
+    if(data == undefined || data == null){
+      nomor_soal = 0;
+    }else{
+      var lastnum = Object.keys(data)[0];
+      nomor_soal = Number(lastnum) + 1;
+    }
+  });
+
+  var query = firebase.database().ref('games/sabar/question');//.orderByChild('skor').limitToFirst(50);
+    query.once('value').then(function(snapshot){
+      snapshot.forEach(function(childSnapshot){
+        var key = childSnapshot.key;
+        var value = childSnapshot.val();
+        // console.log(value);
+        var jawab = value.jawab;
+        var tanya = value.tanya;
+
+        $('#bodyTable').append('<tr><td>' +tanya +'</td><td>' + jawab +'</td></tr>');
+      });
+    var table =   $('#tabel').DataTable();
+    table
+        .order( [ 1, 'desc' ] )
+        .draw();
+  });
+ 
+ // Sort by column 1 and then re-draw
+    
+
+        function addTanya(){
+          
+
+          tanya = $('#tanyaTxt').val();
+          jawab = $('#jawabSel').val();
+         
+          addSoal();
+          
+          
+
+        }
+
+        function addSoal(){
+          db.ref('games/sabar/question/'+ nomor_soal).set({
+            tanya :tanya,
+            jawab : jawab
+          }, function (error){
+            if(error){
+                alert('Terjadi Kesalahan : ' + error.message);
+            }else{
+                location.href='admin_sabar.html';
+            }
+          });
+        }
+
+        function resetSoal(){
+          db.ref('games/sabar/question').remove();
+          location.href='admin_sabar.html';
+        }
+ 
+
+  </script>
+
+</body>
+
+</html>

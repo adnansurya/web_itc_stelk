@@ -1,0 +1,71 @@
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+	background-color: #eae5e5;
+}
+
+th , td {
+	width: 33.3333%;
+	padding: 20px;
+}
+
+table {
+	/* border: 6px solid black; */
+	width: 70%;
+	border-radius: 6px;
+	text-align: center;
+	/*padding: 15px;*/
+	height: 40%;
+	margin: 20px auto;
+	position: static;
+	font-weight: 200;
+	font-family: 'Lato', sans-serif;
+}
+
+th {
+  background: #88CCF1;
+  color: #FFF;
+  font-weight: 100;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+input.MyButton {
+width: 300px;
+padding: 20px;
+cursor: pointer;
+font-weight: bold;
+font-size: 150%;
+background: #02b0ed;
+color: #fff;
+border: 1px solid #02b0ed;
+border-radius: 5px;
+margin: 20px auto;
+text-align: center;
+}
+
+input.MyButton:hover {
+	background: #0d2d46;
+	border: 1px solid #0d2d46;
+	border-radius: 5px;
+}
+
+body {
+	background:#c1ee77;
+}
+
+.font {
+	font-size: 50px;
+}
+
+* {
+	text-align: center;
+}
+
+span {
+	color: gray;
+	font-size: 9px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Leaderboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato: 100,300,400,700|Luckiest+Guy|Oxygen:300,400" rel="stylesheet">
+  <link href="../css/styleLeaderboard.css" type="text/css" rel="stylesheet">
+  <!-- Vue -->
+  <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+
+  <!-- VueFire -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-database.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script>
+		// Initialize Firebase
+		var config = {
+            apiKey: "AIzaSyCgn26OzP0kBrnlzZqGAhonVJN_o8z-iOg",
+          authDomain: "itc-telkom.firebaseapp.com",
+          databaseURL: "https://itc-telkom.firebaseio.com",
+          projectId: "itc-telkom",
+          storageBucket: "itc-telkom.appspot.com",
+          messagingSenderId: "494028286275",
+          appId: "1:494028286275:web:5a0531e6323b420c"
+        };
+        firebase.initializeApp(config);
+        const db = firebase.database();
+		</script>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <img src="../img/itc.png" alt="" height="400" width="400">
+      <table id="tabel">
+
+            <p class="font" style="font-family: Arial, Helvetica, sans-serif">Pemain yang sudah mencoba :</p>
+      <thead>
+        <tr>
+          <th scope="col">Nama Pemain</th>
+          <th scope="col">Skor Pemain</th>
+          <!-- <th colspan="2" scope="col">Level</th> -->
+        </tr>
+      </thead>
+      <tbody id="bodyTable">
+
+      </tbody>
+            
+
+
+
+    </table>
+	<!-- <p> Leaderboard dapat Ter-reset secara tiba-tiba sesuai keinginan sang admin <span> hehe </span></p> -->
+	<div id="button">
+		<form>
+			<input class="MyButton" type="button" value="Main Lagi!" onclick="window.location.href='index.html'"/>
+			<!-- <input class="MyButton" type="button" value="Main Menu" onclick="window.location.href='index.html'"/> -->
+		</form>
+	</div>
+  </div>
+
+  <script type="text/javascript">
+    var query = firebase.database().ref('games/sabar/result').orderByChild('skor').limitToFirst(50);
+    query.once('value').then(function(snapshot){
+      snapshot.forEach(function(childSnapshot){
+        var key = childSnapshot.key;
+        var value = childSnapshot.val();
+        // console.log(value);
+        var nama = value.nama;
+        var poin = value.poin;
+
+        $('#bodyTable').append('<tr><td>' +nama +'</td><td>' + poin +'</td></tr>');
+      });
+    
+      var table =   $('#tabel').DataTable();
+ 
+      // Sort by column 1 and then re-draw
+      table
+          .order( [ 1, 'desc' ] )
+          .draw();
+      
+    });
+    $(document).ready( function () {
+      
+    } );
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,208 @@
+    <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>Ta'Bangka by ITC</title>
+
+        <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCgn26OzP0kBrnlzZqGAhonVJN_o8z-iOg",
+          authDomain: "itc-telkom.firebaseapp.com",
+          databaseURL: "https://itc-telkom.firebaseio.com",
+          projectId: "itc-telkom",
+          storageBucket: "itc-telkom.appspot.com",
+          messagingSenderId: "494028286275",
+          appId: "1:494028286275:web:5a0531e6323b420c"
+        };
+        firebase.initializeApp(config);
+        const db = firebase.database();
+        </script>
+    </head>
+    <body>
+        <div class="box">
+            <!-- Yang Mau Di Ubah -->
+            <h3 id="kataTxt">Aku Memikirin <br />Angka 1-100</h3>
+            <!-- 1. Benar -->
+            <!-- 2. Lebih Besar -->
+            <!-- 3. Lebih Kecil -->
+            <!-- 4. Coba Kamu Tebak Berapa -->
+            <div id="eye1" class="mata"></div>
+            <div id="eye2" class="mata2"></div>
+            <input id="angkaTxt" type="text" placeholder="1 - 100">
+            <button id="tebakBtn" type="submit" class="btn button_1">Submit</button>
+        </div>
+    </body>
+    <script src='js/jquery-1.10.2.min.js'></script>
+    <script  src="js/index.js"></script>
+    <script>
+         var time1, time2, time3;
+         var level;
+        var nama;
+        var angkaTebak; //angka tebakan pemain
+        var percobaan; //jumlah percobaan
+        var angkaRahasia;
+        
+        narasi();
+       
+    
+
+    function mintaNama(){
+        $('#angkaTxt').val('');
+        $('#angkaTxt').attr('placeholder','Masukkan Nama');
+        $('#kataTxt').html('<br><br>');
+        $('#kataTxt').css('visibility','hidden');   
+       $('#angkaTxt').css('display','block');
+       $('#tebakBtn').css('visibility','visible');
+        
+        $('#tebakBtn').click(function(){
+            nama =  $('#angkaTxt').val();
+            leaderboard();
+            //time1 = setTimeout(leaderboard,3000);
+        });
+    }
+
+ 
+       
+       
+   
+        
+        
+
+   
+    function narasi(){
+        angkaRahasia = Math.floor(Math.random()*100);
+        // console.log("Komputer : " + angkaRahasia);
+        $('#angkaTxt').css('display','none');
+        $('#tebakBtn').css('visibility','hidden');
+        $('#kataTxt').css('visibility','visible'); 
+        $('#kataTxt').html('<br>aku sedang <br> memikirkan <br> sebuah angka <br> 1 - 100 ,  <br> ayo tebak!!');
+        clearTimeout(time1);
+         time2 = setTimeout(cobaTebak ,5000);
+         percobaan = 0;
+    }
+
+    function cobaTebak (){
+        $('#kataTxt').html('<br> <br>')
+        
+        
+     
+        $('#angkaTxt').val('');
+        $('#angkaTxt').css('display','block');
+        $('#angkaTxt').attr('placeholder','1 - 100');
+        $('#tebakBtn').css('visibility','visible');
+       
+        clearTimeout(time2);
+        clearTimeout(time3);
+        
+       setTimeout(getTebak, 2500);
+        
+
+        
+
+        
+
+        
+        
+    }
+
+    function getTebak(){
+        
+        $('#tebakBtn').click(function(){
+            angkaTebak = $('#angkaTxt').val();
+
+            
+            if(angkaTebak > angkaRahasia){
+                $('#kataTxt').html('<br><br>Lebih Kecil!');           
+            }else if (angkaTebak < angkaRahasia) {
+                $('#kataTxt').html('<br><br>Lebih Besar!');                     
+            }else {
+                $('#kataTxt').html('<br><br>Kamu Benar!! <br> jawabannya <br> adalah ' + angkaRahasia);           
+            }
+
+            $('#tebakBtn').css('visibility','hidden');
+            $('#angkaTxt').css('display','none');
+                        
+          
+            if(angkaRahasia != angkaTebak){
+                
+                time3 = setTimeout(cobaTebak ,3000);
+                
+            }else{
+                time3 = setTimeout(tanyaNama, 3000);
+            }
+            percobaan++;
+            // console.log(percobaan);
+            
+            
+
+        });
+    }
+
+    function lebihKecil(){
+        $('#kataTxt').html('Lebih Kecil!');
+    }
+    function lebihBesar(){
+        $('#kataTxt').html('Lebih Besar!');
+    }
+
+   
+
+   
+
+    function benar(){
+        $('#kataTxt').html('<br><br>Kamu sudah <br> mencoba <br> sebanyak ' + percobaan + ' kali.');
+        clearTimeout(time3);
+       setTimeout(tanyaNama, 3000);
+       
+    }
+
+    function tanyaNama(){
+        $('#angkaTxt').css('display','none');
+        $('#tebakBtn').css('visibility','hidden');
+        $('#kataTxt').html('<br><br>Nama Kamu <br> Siapa?');
+
+        setTimeout(mintaNama, 3000);
+        clearTimeout(time3);
+    }
+
+    function leaderboard(){    
+
+        if(percobaan <= 10){
+            level = "Dewa";
+        }else if(percobaan <= 15 ){
+            level = "Jago";
+        }else if(percobaan <= 20){
+            level = "Biasa";
+        }else if(percobaan > 20){
+            level = "Noob";
+        }
+        setTimeout(submitScore,1500);
+
+       
+
+        
+
+    }
+
+    function submitScore(){
+        db.ref('games/tabangka').push({
+            nama : nama,
+           // coba : percobaan,
+            level : level
+            
+        }, function (error){
+            if(error){
+                alert('Terjadi Kesalahan : ' + error.message);
+            }else{
+                location.href='leaderboard.html';
+            }
+        });
+    }
+
+    </script>
+</html>
