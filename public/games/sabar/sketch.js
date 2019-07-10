@@ -236,7 +236,7 @@ let nama;
             
             if(ulang-3 == jumlah_soal){
               nama = window.prompt("Masukkan Nama Kamu : ");
-              poin = poin / jumlah_soal * 100
+              poin = Math.round(poin / jumlah_soal * 100);
               infoTxt.html('Selamat ' + nama + ', Skor Kamu : ' + poin);
               nomorTxt.html('Permainan Selesai');
               console.log('selesai');
