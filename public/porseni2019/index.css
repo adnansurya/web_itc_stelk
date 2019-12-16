@@ -1,0 +1,67 @@
+html, body {
+    height: 100%;
+}
+
+.jumbtroons {
+    height: 25em;
+    background-image: url(../porseni.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: bottom;
+}
+
+.jumbtroons h1{
+    font-size: 80px;
+    font-weight: bolder;
+}
+
+.jumbtroons h2{
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+@media only screen and (max-width: 525px) {
+    .jumbtroons h2{
+        font-size: 40px;
+        font-weight: bolder;
+    }
+
+    .jumbtroons h1{
+        font-size: 60px;
+        font-weight: bolder;
+    }
+    
+
+}
+  
+
+.nav-tabs a {
+    color: black;
+    font-weight: bold;
+}
+
+footer h1{
+    font-size: 20px;
+    text-align: center;
+}
+
+footer {    
+    padding: 0;
+    margin: 0;
+}
+
+footer a {
+    color: black;
+    font-weight: bolder;
+}
+
+.borbot {
+    border-bottom: solid 3px black;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bolder;
+}
+.borbot h2{
+    font-weight: bolder;
+    text-transform: uppercase;
+}
