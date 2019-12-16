@@ -3,11 +3,9 @@ html, body {
 }
 
 .jumbtroons {
-    height: 25em;
-    background-image: url(../porseni.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: bottom;
+    height: 26em;
+    background: url(../porseni.png) no-repeat center top fixed;
+    background-size: contain;
 }
 
 .jumbtroons h1{
@@ -30,9 +28,45 @@ html, body {
         font-size: 60px;
         font-weight: bolder;
     }
+
+    /* .jumbtroons {
+        height: 20em;
+        background-image: url(../porseni.png) no-repeat center center fixed;
+        background-size: cover;
+    } */
+
     
 
 }
+
+@media screen and (min-width: 980px) /* Desktop */ {
+    .jumbtroons {
+        height: 39em;
+        background-size: contain;
+    }
+}
+
+@media (min-height: 1366px) and (min-width: 980px) /* Desktop */ {
+    .jumbtroons {
+        height: 26em;
+        background-size: contain;
+    }
+}
+
+@media screen  and (max-width: 979px) /* Tablet */ {
+    .jumbtroons {
+        height: 20.1em;
+    }
+}
+  
+@media screen and (max-width: 500px) /* Mobile */ {
+    .jumbtroons {
+        height: 9.2em;
+        background-size: contain;
+    }
+}
+
+
   
 
 .nav-tabs a {
