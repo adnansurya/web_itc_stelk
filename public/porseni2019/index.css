@@ -1,5 +1,10 @@
 html, body {
     height: 100%;
+    overflow-x: hidden;
+}
+
+table {
+    border-top: 3px solid black !important;
 }
 
 .jumbtroons {
@@ -64,6 +69,13 @@ html, body {
         height: 9.2em;
         background-size: contain;
     }
+
+    .tabsis a {
+        padding: 0.5em !important;
+        text-align: left !important;
+        font-size: 18px;
+    }
+
 }
 
 
@@ -98,4 +110,8 @@ footer a {
 .borbot h2{
     font-weight: bolder;
     text-transform: uppercase;
+}
+
+.holds-the-iframe {
+    background:url(../5.gif) center center no-repeat;
 }
